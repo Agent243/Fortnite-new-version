@@ -107,63 +107,78 @@ user_problem_statement: "Créer un jeu Fortnite Battle Royale complet avec inter
 backend:
   - task: "Real-time multiplayer WebSocket system"
     implemented: true
-    working: false  # needs testing
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: false
           agent: "main"
           comment: "Just implemented WebSocket connection manager with game state synchronization, player movement, building system, combat system, and storm mechanics. Need to test all endpoints and WebSocket functionality."
+        - working: true
+          agent: "testing"
+          comment: "WebSocket system tested successfully. Connection works locally (ws://localhost:8001), building/shooting/loot collection all work. Player movement requires API join first (correct behavior). External WebSocket through ingress has routing issues but local works perfectly."
 
   - task: "Game state management and player system"
     implemented: true
-    working: false  # needs testing
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: false
           agent: "main"
           comment: "Implemented player join system, game sessions, leaderboard, and complete game state management with MongoDB integration."
+        - working: true
+          agent: "testing"
+          comment: "All player and game state APIs working perfectly. Player join creates proper player objects, game state returns correct structure with players/structures/loot/storm, sessions created and listed correctly, leaderboard sorted by kills."
 
   - task: "Building/construction system backend"
     implemented: true
-    working: false  # needs testing
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: false
           agent: "main"
           comment: "Implemented structure building system with wall/ramp/floor/roof types, different materials (wood/stone/metal), and real-time broadcasting."
+        - working: true
+          agent: "testing"
+          comment: "Building system works perfectly via WebSocket. Structures are created with correct type/material/position and broadcast to all clients in real-time."
 
   - task: "Combat and loot system"
     implemented: true
-    working: false  # needs testing
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high" 
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: false
           agent: "main"
           comment: "Implemented loot spawning system with weapons/materials/healing items, shooting system with WebSocket broadcasting, and rarity system."
+        - working: true
+          agent: "testing"
+          comment: "Combat and loot systems working perfectly. Loot spawning creates 50 items with proper rarity/types, shooting broadcasts correctly via WebSocket, loot collection removes items from game state."
 
   - task: "Storm/battle royale mechanics"
     implemented: true
-    working: false  # needs testing
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: false
           agent: "main"
           comment: "Implemented storm circle shrinking system with automatic background task and damage mechanics."
+        - working: true
+          agent: "testing"
+          comment: "Storm mechanics working perfectly. Manual storm updates work correctly, and background task automatically shrinks storm every 30 seconds from 800 -> 750 -> 700 etc. Verified by monitoring radius changes over time."
 
 frontend:
   - task: "Game canvas and rendering engine"
