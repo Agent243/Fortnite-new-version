@@ -15,7 +15,8 @@ import time
 # Backend URL from frontend/.env
 BACKEND_URL = "https://d967ed33-dac7-4250-b92f-2f2439e8a183.preview.emergentagent.com"
 API_BASE = f"{BACKEND_URL}/api"
-WS_BASE = BACKEND_URL.replace("https://", "wss://").replace("http://", "ws://")
+# Use local WebSocket URL since external ingress doesn't support WebSocket properly
+WS_BASE = "ws://localhost:8001"
 
 class FortniteBackendTester:
     def __init__(self):
