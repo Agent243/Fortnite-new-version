@@ -249,12 +249,13 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Real-time multiplayer WebSocket system"
-    - "Game state management and player system"
-    - "Building/construction system backend"
-    - "Combat and loot system"
+    - "Game canvas and rendering engine"
+    - "Real-time building system frontend"
+    - "PlayStation gamepad support"
+    - "Combat system and inventory UI"
+    - "WebSocket multiplayer integration"
   stuck_tasks: []
-  test_all: true
+  test_all: false
   test_priority: "high_first"
 
 agent_communication:
